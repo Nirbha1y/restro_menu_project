@@ -1,0 +1,24 @@
+{% extends 'layouts/master.html' %}
+
+{% block title%}
+MENUS |Add
+{%endblock%}
+
+{% block content %}
+   <div class ="container">
+      <div class = "card p-5 mt-3">
+          {% if title %}
+              <h1> {{ title }} </h1>
+              <hr>
+          {% else %}
+              <h1> This adds the body content of add page </h1>
+              <hr>
+          {% endif %}
+          <form action="#">
+              {% csrf_token %}
+              {{menu_create_form.as_p }}
+              <input type="submit" class="btn btn-sm btn-primary" value="Add Menu">
+           </form>
+       </div>
+    </div>
+{% endblock %}
