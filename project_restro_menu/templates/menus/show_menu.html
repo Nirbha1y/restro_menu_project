@@ -1,9 +1,24 @@
 {% extends 'layouts/master.html' %}
 
-{% block title%}
-MENUS | Show
-{%endblock%}
+{% block title %}
+Menu | DETAIL
+{% endblock %}
 
 {% block content %}
-<h1> This shows the List </h1>
+<div class="container">
+    <a href="{% url 'menu-add' %}" class ="btn btn-sm btn-primary mb-3 mt-3">Back</a>  
+
+    <div class="card p-5 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h1>{{ data.menu_title }}</h1>
+            </div>
+            <div class="card-body">
+                <h2>Category: <i>{{ data.menu_category.category_title }}</i></h2>
+                <h2>Ingredient: <i>{{ data.menu_ingredient }}</i></h2>
+                <h2>Price: <i>{{ data.menu_price }}</i></h2>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

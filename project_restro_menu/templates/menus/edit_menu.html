@@ -1,9 +1,38 @@
 {% extends 'layouts/master.html' %}
 
-{% block title%}
-MENUS | Edit
-{%endblock%}
+{% block title %}
+Menu | UPDATE
+{% endblock %}
 
 {% block content %}
-<h1> This edits body content of menu </h1>
+<div class="container">
+    <div class="card p-5 mt-3">
+        <h1>Update menu details..</h1>
+        <hr>
+        <form action="{% url 'menu-edit' data.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group mb-2">
+                <label for="menu_title">Menu Title</label>
+                <input type="text" name="menu_title" class="form-control mt-2" value="{{ data.menu_title }}">
+            </div>
+            <div class="form-group mb-2">
+                <label for="menu_price">Menu Price</label>
+                <input type="number" name="menu_price" class="form-control mt-2" value="{{ data.menu_price }}">
+            </div>
+            <div class="form-group mb-2">
+                <label for="menu_ingredient">Menu Ingredient</label>
+                <input type="text" name="menu_ingredient" class="form-control mt-2" value="{{ data.menu_ingredient }}">
+            </div>
+            <div class="form-group mb-2">
+                <select name="menu_category" class="form-control mt-2">
+                    <option value="0">Select Category</option>
+                    {% for val in categories %}
+                    <option value="{{ val.id }}" class="form-control">{{ val.category_title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="submit" value="Update" class="btn btn-primary btn-sm">
+        </form>
+    </div>
+</div>
 {% endblock %}

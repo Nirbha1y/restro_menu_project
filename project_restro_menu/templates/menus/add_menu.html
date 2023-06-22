@@ -6,6 +6,8 @@ MENUS |Add
 
 {% block content %}
    <div class ="container">
+          <a href="{% url 'menu-add' %}" class ="btn btn-sm btn-primary mb-3 mt-3">Back</a>  
+
       <div class = "card p-5 mt-3">
           {% if title %}
               <h1> {{ title }} </h1>
@@ -14,7 +16,7 @@ MENUS |Add
               <h1> This adds the body content of add page </h1>
               <hr>
           {% endif %}
-          <form action="#">
+          <form action="{% url 'menu-add' %}" method="post">
               {% csrf_token %}
               {{menu_create_form.as_p }}
               <input type="submit" class="btn btn-sm btn-primary" value="Add Menu">
