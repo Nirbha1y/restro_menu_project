@@ -4,6 +4,8 @@ MENUS |List
 {%endblock%} 
 {%block content %}
     <div class="container">
+        {%  include 'partials/_message.html' %}
+
         <div class="card p-3 mt-3">
           <a href="{% url 'menu-add' %}" class ="btn btn-sm btn-primary mb-3 mt-3">Add New Menu</a>  
           <div class="card-header">

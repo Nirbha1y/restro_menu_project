@@ -3,14 +3,26 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from django.views import View
 from django.contrib import auth
+from django.contrib import messages
+from app_menus.models import Menu
+from django.db.models import Count
 
 # Create your views here.
 # login ra register lai hamle authenticate garna rakeko ho
+class DashboardView(View):
+    def get(self,request):
+        menu_total = Menu.objects.aggregate(Count("id"))
+        context = {"menu_total" : menu_total.get('id__count')}
+        return render(request,"dashboard.html", context)
+    
+
+
 class LogoutView(View):
     def get(self,request):
         logout(request)
+        messages.success(request, "You are logged out..")
         return redirect('login')
-
+        
 
 class LoginView(View):
     def get(self,request):
@@ -26,7 +38,9 @@ class LoginView(View):
 
         if user is not None:
             login(request, user)
+            messages.success(request, "Login Successfully")
             return redirect('menu-list')
+        messages.success(request, "Login failed")
         return redirect('login')
 
 class RegisterView(View):
