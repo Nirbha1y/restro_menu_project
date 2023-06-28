@@ -2,13 +2,17 @@ from django.shortcuts import render, redirect
 from app_menus.forms import CategoryCreateForm,MenuCreateForm
 from app_menus.models import Menu, Category
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 #Create your views here.
 @login_required(login_url = '/login/')
 def list_menu(request):
     menu_list =Menu.objects.all()
-    context = {  "data" : menu_list }
+    paginator = Paginator(menu_list, 4 ) # 4 data in one page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context = {  "page_obj" : page_obj }
     return render(request,'menus/list_menu.html',context)
 
 @login_required(login_url = '/login/')

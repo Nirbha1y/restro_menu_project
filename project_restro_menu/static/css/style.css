@@ -1,0 +1,31 @@
+.anchor {
+   text-decoration: none;
+   border : 1px solid green;
+   width: 60%;
+   height: 50px;
+   padding: 8%;
+   background-color: white;
+   color: green;
+   transition: ease-in-out;
+ 
+}
+
+.anchor:hover{
+     
+    border: 1px solid white;
+    color: white;
+    background-color: green;
+    transition: 1s ease-in-out;
+    border-radius: 5%;
+    width: 70%;
+    padding: 12%;
+
+
+}
+
+.count {
+    position: relative;
+    z-index: 1;
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

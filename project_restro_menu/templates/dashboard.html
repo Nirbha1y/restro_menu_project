@@ -1,21 +1,14 @@
 {% extends 'layouts/master.html' %}
 
+{% load static %}
+
 {% block title %}
 Restro | Dashboard
 {% endblock %}
 
 {% block custom_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<style>
-    .count {
-        position: relative;
-        z-index: 1;
-        font-size: 35px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-</style>
-
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 {% endblock %}
 
@@ -27,17 +20,17 @@ Restro | Dashboard
         <div class="d-flex flex-row justify-content-between">
             <div class="card p-5 w-25">
                 <i class="fa-sharp fa-solid fa-person-military-pointing"></i> <h3>Customers</h3>
-                <a href="{% url 'menu-list' %}">View all</a>
+                <a href="{% url 'menu-list' %}"class ="anchor">View all</a>
                 <span class="count">15</span>
             </div>
             <div class="card p-5 w-25">
                 <i class="fa-solid fa-book"></i></i> <h3>Menus</h3>
-                <a href="{% url 'menu-list' %}">View all</a>
+                <a href="{% url 'menu-list' %}"class ="anchor">View all</a>
                 <span class="count">{{ menu_total }} </span>
             </div>
             <div class="card p-5 w-25">
                 <i class="fa-solid fa-file-invoice"></i> <h3>Accounts</h3>
-                <a href="{% url 'menu-list' %}">View all</a>
+                <a href="{% url 'menu-list' %}"class="anchor"> View all </a>
                 <span class="count">15</span>
             </div>
         </div>
