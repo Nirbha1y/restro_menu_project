@@ -61,13 +61,6 @@ def add_menu(request):
         category_obj = Category.objects.get(id=request.POST.get('menu_category'))
         #method 1
        #
-
-      #method 2
-      #menu =Menu(menu_title=menu_title, menu_price=menu_price, menu_category=category_obj, menu_ingredient=menu_ingredient)
-      #menu_obj.save()
-
-      #method 3: storing data eith form class objects
-      
         menu =MenuCreateForm(request.POST)
         if menu.is_valid():
             menu.menu_category = category_obj
@@ -76,3 +69,30 @@ def add_menu(request):
         return redirect("menu-add")  
     return render(request,'menus/add_menu.html',context)
      
+
+      #method 2
+      #menu =Menu(menu_title=menu_title, menu_price=menu_price, menu_category=category_obj, menu_ingredient=menu_ingredient)
+      #menu_obj.save()
+         
+#method one
+        # menu_obj = Menu()
+        # menu_obj.menu_title = menu_title
+        # menu_obj.menu_price = menu_price
+        # menu_obj.menu_category = category_obj # passing Category Object (Foreign Key Object)
+        # menu_ingredient = menu_ingredient
+        # menu_obj.save()
+        # # method two
+        # menu = Menu(menu_title=menu_title, menu_price=menu_price,
+        #             menu_category=category_obj, menu_ingredient=menu_ingredient)
+        # menu.save()
+
+        # method three - storing data with Form Class Object
+    #     menu = MenuCreateForm(request.POST)
+    #     if menu.is_valid():
+    #         menu.menu_category = category_obj
+    #         menu.save()
+    #         return redirect("menu-list")
+    #     return redirect("menu-add")
+    # return render(request, 'menus/add_menu.html', context)
+      #method 3: storing data eith form class objects
+      
