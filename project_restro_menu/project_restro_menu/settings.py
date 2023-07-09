@@ -124,6 +124,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
+#MEDIA CONFIGURATION
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -135,3 +139,14 @@ MESSAGE_TAGS = {
     messages.error:"danger"
 
 }
+
+
+#email configuration 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = 'smtp.gmail.com'  # google mail server
+EMAIL_HOST_USER =  'your email address'#nrbhaysunuwar@gmail.com'  #host acct email address
+EMAIL_HOST_PASSWORD ='your password' #'pryiwtcrttjyjibl'  #app password generated from gmail account
+EMAIL_PORT = 587   #port number of dls
+EMAIL_USE_TLS = True  #using tls for data encryption
+

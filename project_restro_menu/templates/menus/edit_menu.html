@@ -9,7 +9,7 @@ Menu | UPDATE
     <div class="card p-5 mt-3">
         <h1>Update menu details..</h1>
         <hr>
-        <form action="{% url 'menu-edit' data.id %}" method="post">
+        <form action="{% url 'menu-edit' data.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group mb-2">
                 <label for="menu_title">Menu Title</label>
@@ -30,6 +30,9 @@ Menu | UPDATE
                     <option value="{{ val.id }}" class="form-control">{{ val.category_title }}</option>
                     {% endfor %}
                 </select>
+            </div>
+            <div class="form-group mb-2">
+                <input type="file" name ="menu_img" class="form-control mb-2 mt-2">
             </div>
             <input type="submit" value="Update" class="btn btn-primary btn-sm">
         </form>

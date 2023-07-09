@@ -16,7 +16,7 @@ MENUS |Add
               <h1> This adds the body content of add page </h1>
               <hr>
           {% endif %}
-          <form action="{% url 'menu-add' %}" method="post">
+          <form action="{% url 'menu-add' %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{menu_create_form.as_p }}
               <input type="submit" class="btn btn-sm btn-primary" value="Add Menu">

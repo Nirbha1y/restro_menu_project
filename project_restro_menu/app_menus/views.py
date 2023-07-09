@@ -32,10 +32,10 @@ def edit_menu(request,id):
     if request.method =="POST":
         #to update data
 
-        menu_obj = MenuCreateForm(data=request.POST, instance =menu_obj)
+        menu_obj = MenuCreateForm(data=request.POST, instance =menu_obj, files =request.FILES)
         if menu_obj.is_valid():
             menu_obj.save()
-            return redirect("menu_edit") #redirecting to url having id
+            return redirect("menu_edit",id) #redirecting to url having id
 
 
     return render(request, 'menus/edit_menu.html',context)
@@ -57,11 +57,11 @@ def add_menu(request):
         menu_title = request.POST.get('menu_title') 
         menu_price = request.POST.get('menu_price')
         menu_ingredient = request.POST.get('menu_ingredient')
-        # menu_category = request.POST.get('menu_category')
         category_obj = Category.objects.get(id=request.POST.get('menu_category'))
+        # menu_category = request.POST.get('menu_category')
         #method 1
        #
-        menu =MenuCreateForm(request.POST)
+        menu =MenuCreateForm(request.POST,request.FILES)
         if menu.is_valid():
             menu.menu_category = category_obj
             menu.save()
